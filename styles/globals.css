@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f5f2ec;
+  --color-cream-2: #ece8e2;
+  --color-ink: #1c1c1c;
+  --color-graphite: #3a3a3a;
+  --color-sage: #8fa79a;
+  --color-sage-2: #6f8578;
+  /* darker sage for small text on cream — meets 4.5:1 */
+  --color-sage-3: #566b5e;
+  --color-line: #d8d4ce;
+
+  --font-sans: var(--font-instrument), "Avenir Next", "Avenir", -apple-system,
+    "Helvetica Neue", sans-serif;
+
+  --tracking-editorial: -0.03em;
+  --tracking-label: 0.22em;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #8fa79a;
+  color: #f5f2ec;
+}
+
+/* Editorial label — small uppercase spaced */
+.label {
+  font-size: 0.6875rem;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Reveal-on-scroll base state (JS flips) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition:
+    opacity 1s var(--ease-out-expo),
+    transform 1s var(--ease-out-expo),
+    filter 1s var(--ease-out-expo);
+  will-change: opacity, transform, filter;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid #6f8578;
+  outline-offset: 3px;
+}
+
+/* Interaction quality */
+a,
+button {
+  touch-action: manipulation;
+}
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+/* Editorial text flow */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+
+/* Anchored sections clear the fixed navbar */
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* Skip link — visible only when focused */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-300%);
+  background: var(--color-ink);
+  color: var(--color-cream);
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Image hover zoom container */
+.zoom-media {
+  overflow: hidden;
+}
+.zoom-media img,
+.zoom-media .zoom-target {
+  transition: transform 1.2s var(--ease-out-expo);
+}
+.zoom-media:hover img,
+.zoom-media:hover .zoom-target {
+  transform: scale(1.03);
+}
