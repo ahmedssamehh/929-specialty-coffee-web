@@ -5,6 +5,8 @@ import SmoothScroll from "@/components/ui/SmoothScroll";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import RevealManager from "@/components/ui/RevealManager";
+import ScrollProgress from "@/components/ui/ScrollProgress";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const instrument = Instrument_Sans({
   subsets: ["latin"],
@@ -26,18 +28,26 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "929 Specialty Coffee",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "929 Specialty Coffee",
+    description:
+      "Craftsmanship, calmness, precision — coffee as quiet luxury.",
+  },
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={instrument.variable}>
-      <body>
+    <html lang="en" className={instrument.variable} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <a href="#main" className="skip-link">
           Skip to content
         </a>
         <SmoothScroll>
+          <ScrollProgress />
+          <CustomCursor />
           <Navbar />
           <main id="main">{children}</main>
           <Footer />

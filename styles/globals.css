@@ -147,3 +147,191 @@ p {
 .zoom-media:hover .zoom-target {
   transform: scale(1.03);
 }
+
+/* ——— Scroll progress indicator ——— */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: #8fa79a;
+  z-index: 100;
+  transform-origin: left;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* ——— Custom cursor ——— */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #3a3a3a;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition:
+    width 0.35s var(--ease-out-expo),
+    height 0.35s var(--ease-out-expo),
+    border-color 0.35s var(--ease-out-expo),
+    background 0.35s var(--ease-out-expo),
+    opacity 0.35s var(--ease-out-expo);
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+.custom-cursor.visible {
+  opacity: 1;
+}
+.custom-cursor.expanded {
+  width: 48px;
+  height: 48px;
+  border-color: #8fa79a;
+  background: rgba(143, 167, 154, 0.08);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* ——— Premium range slider ——— */
+input[type="range"].premium-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: #d8d4ce;
+  border-radius: 1px;
+  outline: none;
+}
+input[type="range"].premium-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #8fa79a;
+  cursor: grab;
+  border: 2px solid #f5f2ec;
+  box-shadow: 0 2px 8px rgba(28, 28, 28, 0.15);
+  transition: transform 0.3s var(--ease-out-expo);
+}
+input[type="range"].premium-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.2);
+}
+input[type="range"].premium-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #8fa79a;
+  cursor: grab;
+  border: 2px solid #f5f2ec;
+  box-shadow: 0 2px 8px rgba(28, 28, 28, 0.15);
+}
+
+/* ——— Modal backdrop ——— */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(28, 28, 28, 0.6);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.4s var(--ease-out-expo);
+}
+.modal-content {
+  background: #f5f2ec;
+  border: 1px solid #d8d4ce;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  max-width: 28rem;
+  width: calc(100% - 3rem);
+  animation: modalIn 0.5s var(--ease-out-expo);
+}
+
+/* ——— Keyframes ——— */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes gentlePulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+@keyframes steamRise {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-12px) scaleX(1.1);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateY(-28px) scaleX(0.8);
+    opacity: 0;
+  }
+}
+@keyframes pourStream {
+  0% { height: 0; opacity: 0; }
+  10% { opacity: 1; }
+  100% { height: 100%; opacity: 1; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-gentle-pulse {
+  animation: gentlePulse 2.5s ease-in-out infinite;
+}
+.animate-steam {
+  animation: steamRise 3s ease-out infinite;
+}
+.animate-count-up {
+  animation: countUp 0.6s var(--ease-out-expo) both;
+}
+
+/* ——— Flavor bar fill ——— */
+.flavor-bar {
+  height: 4px;
+  background: #d8d4ce;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.flavor-bar-fill {
+  height: 100%;
+  background: #8fa79a;
+  border-radius: 2px;
+  transition: width 0.8s var(--ease-out-expo);
+}
+
+/* ——— Section divider ——— */
+.section-divider {
+  width: 48px;
+  height: 1px;
+  background: #8fa79a;
+  margin: 0 auto;
+}
+
+/* ——— Maximum Performance Throttling ——— */
+.is-scrolling * {
+  pointer-events: none !important;
+}

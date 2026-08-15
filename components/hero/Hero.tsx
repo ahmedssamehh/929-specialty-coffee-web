@@ -152,39 +152,63 @@ export default function Hero() {
           <p className="label reveal text-sage-3">
             Nine Two Nine — Specialty Coffee
           </p>
-          <h1 className="reveal mt-4 text-4xl font-light leading-[1.05] tracking-editorial text-ink md:text-7xl lg:mt-6" data-reveal-delay="120">
+          <h1
+            className="reveal mt-4 text-4xl font-light leading-[1.05] tracking-editorial text-ink md:text-7xl lg:mt-6"
+            data-reveal-delay="120"
+          >
             Precision in
             <br />
             every pour.
           </h1>
-          <p className="reveal mt-5 max-w-md text-sm leading-relaxed text-graphite md:text-lg lg:mt-8" data-reveal-delay="240">
-            Rare origins, exacting extraction, quiet rooms. 929 is coffee
-            practiced as a craft — measured in grams, seconds and stillness.
+          <p
+            className="reveal mt-5 max-w-md text-sm leading-relaxed text-graphite md:text-lg lg:mt-8"
+            data-reveal-delay="240"
+          >
+            A slower way to experience coffee. Rare origins, exacting
+            extraction, quiet rooms — coffee practiced as a craft.
           </p>
-          <div className="reveal mt-6 flex flex-wrap items-center gap-4 lg:mt-10" data-reveal-delay="360">
+          <div
+            className="reveal mt-6 flex flex-wrap items-center gap-4 lg:mt-10"
+            data-reveal-delay="360"
+          >
             <Link
               href="/menu"
               className="label inline-flex items-center rounded-full bg-ink px-8 py-4 text-cream transition-colors duration-300 hover:bg-sage-2"
             >
-              Explore the menu
+              Explore the experience
             </Link>
             <Link
               href="/origins"
               className="label inline-flex items-center rounded-full border border-ink px-8 py-4 text-ink transition-all duration-300 hover:border-sage-2 hover:text-sage-2"
             >
-              Our origins
+              Discover our origins
             </Link>
           </div>
-          <p className="reveal mt-14 hidden items-center gap-3 text-xs text-graphite lg:flex" data-reveal-delay="480">
-            <span className="inline-block h-10 w-px animate-pulse bg-sage" />
-            Scroll to extract
-          </p>
+
+          {/* Scroll indicator */}
+          <div
+            className="reveal mt-14 hidden items-center gap-3 lg:flex"
+            data-reveal-delay="480"
+          >
+            <span className="flex flex-col items-center gap-2">
+              <span className="inline-block h-12 w-px animate-gentle-pulse bg-sage" />
+              <span className="label text-xs text-sage">
+                Scroll to extract
+              </span>
+            </span>
+          </div>
         </div>
 
         {/* Right — the scene */}
         <div className="relative flex items-center justify-center">
           <HeroScene />
         </div>
+      </div>
+
+      {/* Mobile scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 lg:hidden">
+        <span className="inline-block h-8 w-px animate-gentle-pulse bg-sage" />
+        <span className="label text-[0.55rem] text-sage">Scroll to extract</span>
       </div>
     </section>
   );

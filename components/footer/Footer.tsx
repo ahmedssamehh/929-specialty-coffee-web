@@ -6,9 +6,10 @@ const columns = [
   {
     title: "Visit",
     links: [
-      { label: "Locations", href: "/locations" },
+      { label: "Spaces", href: "/locations" },
       { label: "Menu", href: "/menu" },
       { label: "Experiences", href: "/experiences" },
+      { label: "Order Ahead", href: "/order" },
     ],
   },
   {
@@ -17,13 +18,15 @@ const columns = [
       { label: "Coffee Origins", href: "/origins" },
       { label: "Journal", href: "/journal" },
       { label: "About", href: "/about" },
+      { label: "929 Club", href: "/club" },
     ],
   },
   {
     title: "Connect",
     links: [
       { label: "Contact", href: "/contact" },
-      { label: "Subscription", href: "/#subscription" },
+      { label: "Gift Cards", href: "/gift-cards" },
+      { label: "Proposal", href: "/proposal" },
     ],
   },
 ];
@@ -63,10 +66,15 @@ export default function Footer() {
         </div>
 
         <div className="mt-20 flex flex-col items-start justify-between gap-6 border-t border-line pt-8 sm:flex-row sm:items-center">
-          <p className="text-xs text-graphite">
-            © {new Date().getFullYear()} Nine Two Nine Specialty Coffee. All
-            rights reserved.
-          </p>
+          <div>
+            <p className="text-xs text-graphite">
+              © {new Date().getFullYear()} Nine Two Nine Specialty Coffee. All
+              rights reserved.
+            </p>
+            <p className="mt-2 text-[0.65rem] text-graphite/60">
+              Digital experience concept · Not an official 929 product
+            </p>
+          </div>
           <div className="flex items-center gap-5">
             <a
               href="https://instagram.com"

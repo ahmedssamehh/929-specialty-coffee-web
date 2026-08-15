@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const links = [
   { href: "/menu", label: "Menu" },
   { href: "/origins", label: "Origins" },
-  { href: "/locations", label: "Locations" },
+  { href: "/locations", label: "Spaces" },
   { href: "/experiences", label: "Experiences" },
   { href: "/journal", label: "Journal" },
   { href: "/about", label: "About" },
@@ -75,10 +75,10 @@ export default function Navbar() {
 
         <div className="hidden lg:block">
           <Link
-            href="/contact"
-            className="label inline-flex items-center rounded-full border border-ink px-6 py-3 text-ink transition-all duration-300 hover:border-sage-2 hover:bg-sage-2 hover:text-cream"
+            href="/order"
+            className="label inline-flex items-center rounded-full bg-ink px-6 py-3 text-cream transition-all duration-300 hover:bg-sage-2"
           >
-            Contact
+            Order
           </Link>
         </div>
 
