@@ -36,7 +36,9 @@ export default function OriginsExplorer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-[280px_1fr]">
           {/* Country index */}
-          <nav aria-label="Origins" className="reveal">
+          {/* min-w-0: without it this grid child cannot shrink below the width of
+              the scrollable list inside, which overflows the page on phones. */}
+          <nav aria-label="Origins" className="reveal min-w-0">
             <ul className="flex gap-3 overflow-x-auto pb-2 lg:flex-col lg:gap-0 lg:divide-y lg:divide-line lg:border-y lg:border-line">
               {origins.map((org, i) => (
                 <li key={org.slug} className="shrink-0">
@@ -69,7 +71,7 @@ export default function OriginsExplorer() {
           </nav>
 
           {/* Detail */}
-          <div key={o.slug}>
+          <div key={o.slug} className="min-w-0">
             <div className="grid gap-8 xl:grid-cols-[1.2fr_1fr]">
               <div>
                 <p className="label text-sage-3">{o.region}</p>
@@ -147,7 +149,7 @@ export default function OriginsExplorer() {
                           src={photo.src}
                           alt={photo.alt}
                           fill
-                          sizes="15vw"
+                          sizes="(min-width: 1280px) 15vw, (min-width: 1024px) 22vw, 30vw"
                           className="zoom-target object-cover"
                         />
                       </div>

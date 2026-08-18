@@ -56,7 +56,7 @@ export default function TheRitual() {
               alt={ritual.image.alt}
               fill
               className="object-cover object-right grayscale mix-blend-multiply opacity-50"
-              sizes="50vw"
+              sizes="100vw"
             />
           </div>
         ))}

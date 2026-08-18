@@ -30,7 +30,7 @@ export default function OrderFlow() {
       {/* Steps Indicator */}
       <div className="mb-12 flex items-center justify-between relative before:absolute before:left-0 before:top-1/2 before:-z-10 before:h-[1px] before:w-full before:-translate-y-1/2 before:bg-line">
         {STEPS.map((s, i) => (
-          <div key={s} className="flex flex-col items-center gap-2 bg-cream px-2">
+          <div key={s} className="flex min-w-0 flex-col items-center gap-2 bg-cream px-1 sm:px-2">
             <div className={cn(
               "flex h-8 w-8 items-center justify-center rounded-full text-xs font-medium transition-colors",
               i === step ? "bg-ink text-cream" : i < step ? "bg-sage-2 text-cream" : "bg-cream-2 text-graphite border border-line"
@@ -38,7 +38,9 @@ export default function OrderFlow() {
               {i + 1}
             </div>
             <span className={cn(
-              "text-[0.65rem] tracking-widest uppercase",
+              // Labels are dropped on the narrowest phones; the numbered circles
+              // still convey progress and the heading names the current step.
+              "hidden sm:block text-[0.65rem] tracking-widest uppercase whitespace-nowrap",
               i <= step ? "text-ink" : "text-graphite/60"
             )}>
               {s}

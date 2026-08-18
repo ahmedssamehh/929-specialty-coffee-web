@@ -67,7 +67,6 @@ body {
     opacity 1s var(--ease-out-expo),
     transform 1s var(--ease-out-expo),
     filter 1s var(--ease-out-expo);
-  will-change: opacity, transform, filter;
 }
 
 .reveal.is-visible {
@@ -178,7 +177,8 @@ p {
     border-color 0.35s var(--ease-out-expo),
     background 0.35s var(--ease-out-expo),
     opacity 0.35s var(--ease-out-expo);
-  transform: translate(-50%, -50%);
+  transform: translate3d(0, 0, 0) translate(-50%, -50%);
+  will-change: transform;
   mix-blend-mode: difference;
   opacity: 0;
 }
@@ -329,9 +329,4 @@ input[type="range"].premium-slider::-moz-range-thumb {
   height: 1px;
   background: #8fa79a;
   margin: 0 auto;
-}
-
-/* ——— Maximum Performance Throttling ——— */
-.is-scrolling * {
-  pointer-events: none !important;
 }
