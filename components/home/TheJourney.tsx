@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { photos } from "@/lib/images";
+import useIsomorphicLayoutEffect from "@/lib/useIsomorphicLayoutEffect";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,8 +51,10 @@ export default function TheJourney() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
+  // Layout effect: this trigger pins, and the pin wrapper has to be
+  // unwound before React detaches the node. See the hook for details.
+  useIsomorphicLayoutEffect(() => {
+    const ctx = gsap.context(() => {
       // Horizontal scroll for desktop
       const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
       
@@ -67,7 +70,7 @@ export default function TheJourney() {
             pin: true,
             scrub: 1,
             snap: 1 / (sections.length - 1),
-            end: () => `+=${containerRef.current?.offsetWidth || 0 * sections.length}`,
+            end: () => `+=${(containerRef.current?.offsetWidth || 0) * sections.length}`,
           }
         });
       } else {

@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroScene, { SCENE } from "./HeroScene";
+import useIsomorphicLayoutEffect from "@/lib/useIsomorphicLayoutEffect";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,7 +21,7 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const copyRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
